@@ -1,0 +1,8 @@
+setupRequired(daf_persistence)
+setupRequired(obs_base)
+setupRequired(meas_algorithms)
+setupRequired(afw)
+setupRequired(pipe_tasks)
+
+envAppend(PYTHONPATH, ${PRODUCT_DIR}/python)
+envAppend(PATH, ${PRODUCT_DIR}/bin)
