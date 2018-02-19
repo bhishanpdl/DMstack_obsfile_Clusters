@@ -22,12 +22,13 @@ docker run -itd --name lsst -v `pwd`:/home/lsst/mnt lsstsqre/centos:7-stack-lsst
 docker exec -it lsst bash
 source /opt/lsst/software/stack/loadLSST.bash
 setup lsst_distrib
+# make sure xQuartz is running in Mac
 cd /home/lsst/mnt/
 ```
 
 ## 3. Setup obs_file environment
 ```
-cd ..
+cd tmp/dmstack
 git clone https://github.com/SimonKrughoff/obs_file
 cd obs_file
 git checkout 21fd0d51806c43bf335300a0bc97e409ed9c703e
