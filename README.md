@@ -29,7 +29,7 @@ scons
 cd ..
 ```
 
-# 4. Ingest and process the data
+## 4. Ingest and process the data
 ```
 cd example
 ls # it should have trail00.fits and processCcdConfig.py
