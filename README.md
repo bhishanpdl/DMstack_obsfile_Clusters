@@ -21,6 +21,8 @@ cd /home/lsst/mnt/
 
 ## 3. Setup obs_file environment
 ```
+mkdir -p  ~/tmp/dmstack/example
+cd ~/tmp/dmstack/example 
 git clone https://github.com/SimonKrughoff/obs_file
 cd obs_file
 git checkout 21fd0d51806c43bf335300a0bc97e409ed9c703e
@@ -32,6 +34,8 @@ cd ..
 ## 4. Ingest and process the data
 ```
 cd example
+cp /path/to/trail00.fits .
+echo 'config.charImage.repair.cosmicray.nCrPixelMax=1000000' > processCcdConfig.py
 ls # it should have trail00.fits and processCcdConfig.py
 mkdir input output
 
