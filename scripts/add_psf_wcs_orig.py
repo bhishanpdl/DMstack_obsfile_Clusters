@@ -27,7 +27,7 @@ def add_psf_to_cluster(EXPTIME,n_psf,psf,cluster,o_cluster):
 
   # shape
   # NOTE: NAXIS = 2 means data has two axes
-  NAXIS1p = getheader(psf)['NAXIS1'] # eg. 4000
+  NAXIS1p = getheader(psf)['NAXIS1']
   NAXIS1c = getheader(cluster)['NAXIS1']  
   # print("NAXIS1p = {}".format(NAXIS1p))
   # print("NAXIS1c = {}".format(NAXIS1c))
