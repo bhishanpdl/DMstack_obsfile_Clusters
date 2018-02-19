@@ -27,7 +27,7 @@ cd /home/lsst/mnt/
 
 ## 3. Setup obs_file environment
 ```
-cd ~/tmp/dmstack
+cd ..
 git clone https://github.com/SimonKrughoff/obs_file
 cd obs_file
 git checkout 21fd0d51806c43bf335300a0bc97e409ed9c703e
