@@ -1,0 +1,26 @@
+exit (from docker )
+docker stop lsst
+docker rm lsst
+docker rm $(docker ps -a -q) 
+
+docker run -itd --name lsst -v `pwd`:/home/lsst/mnt lsstsqre/centos:7-stack-lsst_distrib-v13_0
+docker exec -it lsst bash
+source /opt/lsst/software/stack/loadLSST.bash
+setup lsst_distrib
+
+cd /home/lsst/mnt/
+
+cd Research/DMstack
+ls # I have scripts 
+sudo rm -r obs_file input
+
+git clone https://github.com/SimonKrughoff/obs_file
+cd obs_file
+git checkout tickets/DM-6924
+setup -k -r .
+scons
+cd ..
+
+mkdir input
+
+echo "lsst.obs.file.FileMapper" > input/_mapper
