@@ -11,7 +11,7 @@ docker stop lsst; docker rm lsst
 
 ## 1. Prepare data to use with obs_file
 ```
-mkdir ~/tmp/dmstack/example; cd ~/tmp/dmstack/example
+mkdir ~/tmp/dmstack/example; cd ~/tmp/dmstack/example; pwd
 curl https://github.com/bhishanpdl/DMstack_obsfile_example/raw/master/example/trial00_good_fits.zip -L -o a.zip
 unzip a.zip; mv trial00_good.fits trial00.fits
 ```
