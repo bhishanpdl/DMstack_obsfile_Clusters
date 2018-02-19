@@ -2,6 +2,14 @@
 This repo is a basic tutorial how to get started with using DMstack and obs_file
 in Docker.
 
+## Stop and Remove lsst environment from docker
+```
+exit # inside the docker environment
+docker stop lsst  
+docker rm lsst  
+docker rm $(docker ps -a -q)  # WARNING: removes all docker containers
+```
+
 ## Setup lsst environment inside docker
 ```
 docker run -itd --name lsst -v `pwd`:/home/lsst/mnt lsstsqre/centos:7-stack-lsst_distrib-v13_0
@@ -13,8 +21,9 @@ cd /home/lsst/mnt/
 
 ## Setup obs_file environment
 ```
-cd /path/to/DMstack_obsfile_example
+git clone https://github.com/SimonKrughoff/obs_file
 cd obs_file
+git checkout 21fd0d51806c43bf335300a0bc97e409ed9c703e
 setup -k -r .
 scons
 cd ..
@@ -23,16 +32,17 @@ cd ..
 # Ingest and process the data
 ```
 cd example
-ls # it should have trail0.fits and processCcdConfig.py
+ls # it should have trail00.fits and processCcdConfig.py
 mkdir input output
 
 echo "lsst.obs.file.FileMapper" > input/_mapper
 
-ingestImages.py input/ trial0.fits --mode link
+ingestImages.py input/ trial00.fits --mode link
 
-processCcd.py input/ --id filename=trial0.fits --config isr.noise=5 --configfile processCcdConfig.py --clobber-config --output output
+processCcd.py input/ --id filename=trial00.fits --config isr.noise=5 --configfile processCcdConfig.py --clobber-config --output output
 ```
 
+## Exit from docker
 If we want to exit from docker we may run following commands:
 ```
 exit # inside the docker environment
