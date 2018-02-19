@@ -35,7 +35,9 @@ cd ..
 ```
 mkdir ~/tmp/dmstack/example
 cd ~/tmp/dmstack/example
-cp /path/to/trial00.fits .  # download from example/trial00_good.fits
+curl https://github.com/bhishanpdl/DMstack_obsfile_example/raw/master/example/trial00_good_fits.zip -L -o a.zip
+unzip a.zip
+mv mv trial00_good.fits trial00.fits
 echo 'config.charImage.repair.cosmicray.nCrPixelMax=1000000' > processCcdConfig.py
 ls # it should have trial00.fits and processCcdConfig.py
 mkdir input output
