@@ -1,4 +1,4 @@
-# Example of running obs_file in Docker
+# Example of running obs_file in Docker (using DMstack13.0)
 This repo is a basic tutorial how to get started with using DMstack and obs_file
 in Docker.
 
