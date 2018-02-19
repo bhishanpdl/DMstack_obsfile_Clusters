@@ -34,7 +34,7 @@ cd ..
 ## 4. Ingest and process the data
 ```
 cd example
-cp /path/to/trail00.fits .
+cp /path/to/trial00.fits .  # download from example/trial00_good.fits
 echo 'config.charImage.repair.cosmicray.nCrPixelMax=1000000' > processCcdConfig.py
 ls # it should have trail00.fits and processCcdConfig.py
 mkdir input output
