@@ -51,7 +51,7 @@ ingestImages.py input/ trial00.fits --mode link
 processCcd.py input/ --id filename=trial00.fits --config isr.noise=5 --configfile processCcdConfig.py --clobber-config --output output
 ```
 
-## Look at Output
+## 5. Look at Output
 The output file produced is `output/src/trial00/src.fits`.
 We can view this file using fv viewer. For simplicity we can set `.fit` as a 
 default file extension for fv-viewer and copy src.fits to src.fit and open with
@@ -71,7 +71,7 @@ cp output/src/trial00/src.fits output/src/trial00/src.fit
  python read_src_fits.py
  head src_fits.csv
  ```
-## 5. Exit from docker
+## 6. Exit from docker
 If we want to exit from docker we may run following commands:
 ```
 exit # inside the docker environment
