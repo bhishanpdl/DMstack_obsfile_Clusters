@@ -2,12 +2,21 @@
 This repo is a basic tutorial how to get started with using DMstack and obs_file
 in Docker.
 
-## 1. Stop and Remove lsst environment from docker
+## 0. Stop and Remove lsst environment from docker
 ```
 exit # inside the docker environment
 docker stop lsst  
 docker rm lsst  
 docker rm $(docker ps -a -q)  # WARNING: removes all docker containers
+```
+
+## 1. Prepare data to use with obs_file
+```
+mkdir ~/tmp/dmstack/example
+cd ~/tmp/dmstack/example
+curl https://github.com/bhishanpdl/DMstack_obsfile_example/raw/master/example/trial00_good_fits.zip -L -o a.zip
+unzip a.zip
+mv trial00_good.fits trial00.fits
 ```
 
 ## 2. Setup lsst environment inside docker
@@ -33,11 +42,6 @@ cd ..
 
 ## 4. Ingest and process the data
 ```
-mkdir ~/tmp/dmstack/example
-cd ~/tmp/dmstack/example
-curl https://github.com/bhishanpdl/DMstack_obsfile_example/raw/master/example/trial00_good_fits.zip -L -o a.zip
-unzip a.zip
-mv mv trial00_good.fits trial00.fits
 echo 'config.charImage.repair.cosmicray.nCrPixelMax=1000000' > processCcdConfig.py
 ls # it should have trial00.fits and processCcdConfig.py
 mkdir input output
