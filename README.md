@@ -11,6 +11,8 @@ docker stop lsst; docker rm lsst
 
 ## 1. Prepare data to use with obs_file
 ```
+# The file trial00_good.fits is obtained from jedisim cluster simulation
+# After we get output from jedisim, we add psf and fake wcs to this and call it trial00_good.fits.
 mkdir ~/tmp/dmstack/example; cd ~/tmp/dmstack/example; pwd
 curl https://github.com/bhishanpdl/DMstack_obsfile_example/raw/master/example/trial00_good_fits.zip -L -o a.zip
 unzip a.zip; mv trial00_good.fits trial00.fits; rm a.zip; rm -rf __MACOSX; clear; ls; cd ..
