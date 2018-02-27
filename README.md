@@ -13,7 +13,7 @@ docker stop lsst; docker rm lsst
 ```
 mkdir ~/tmp/dmstack/example; cd ~/tmp/dmstack/example; pwd
 curl https://github.com/bhishanpdl/DMstack_obsfile_example/raw/master/example/trial00_good_fits.zip -L -o a.zip
-unzip a.zip; mv trial00_good.fits trial00.fits; rm a.zip; rm -rf __MACOSX; clear; ls
+unzip a.zip; mv trial00_good.fits trial00.fits; rm a.zip; rm -rf __MACOSX; clear; ls; cd ..
 ```
 
 ## 2. Setup lsst environment inside docker
@@ -28,7 +28,7 @@ cd /home/lsst/mnt/
 
 ## 3. Setup obs_file environment
 ```
-cd tmp/dmstack
+# We are at ~/tmp/dmstack  directory and we have example/trail00.fits path here.
 git clone https://github.com/SimonKrughoff/obs_file
 cd obs_file
 git checkout 21fd0d51806c43bf335300a0bc97e409ed9c703e
