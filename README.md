@@ -22,7 +22,7 @@ docker run -itd --name lsst -v `pwd`:/home/lsst/mnt lsstsqre/centos:7-stack-lsst
 docker exec -it lsst bash
 source /opt/lsst/software/stack/loadLSST.bash
 setup lsst_distrib
-# make sure xQuartz is running in Mac
+# From Search Button open XQuartz App
 cd /home/lsst/mnt/
 ```
 
@@ -58,7 +58,7 @@ default file extension for fv-viewer and copy src.fits to src.fit and open with
 fv-viewer.
 ```
 # Open new tab window outside of docker environment
-ls
+cd ~/tmp/dmstack; ls
 cp output/src/trial00/src.fits output/src/trial00/src.fit
 /Applications/fv/fv.app/Contents/MacOS/fv output/src/trial00/src.fit
  ```
