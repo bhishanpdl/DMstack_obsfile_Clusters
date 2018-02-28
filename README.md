@@ -20,13 +20,27 @@ unzip a.zip; mv trial00_good.fits trial00.fits; rm a.zip; rm -rf __MACOSX; clear
 
 ## 2. Setup lsst environment inside docker
 ```
+# Before running docker open XQuartz App from Search Button
 docker run -itd --name lsst -v `pwd`:/home/lsst/mnt lsstsqre/centos:7-stack-lsst_distrib-v13_0
 docker exec -it lsst bash
 source /opt/lsst/software/stack/loadLSST.bash
 setup lsst_distrib
-# From Search Button open XQuartz App
 cd /home/lsst/mnt/
 ```
+
+**Optional**
+After mounting to local drive we can use some of the aliases.
+```bash
+alias cls='clear; ls'
+alias ..='cd ..'
+
+alias obs='cd obs_file && setup -k -r . && scons && cd ..'
+alias ingest='ingestImages.py input/ trial00.fits --mode link'
+alias process='processCcd.py input/ --id filename=trial00.fits --config isr.noise=5 --configfile processCcdConfig.py --clobber-config --output output'
+alias src='/Applications/fv/fv.app/Contents/MacOS/fv output/src/trial00/src.fits'
+```
+
+To use these aliase we need to source this file ```source aliases.sh```.
 
 ## 3. Setup obs_file environment
 ```
