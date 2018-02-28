@@ -31,6 +31,7 @@ cd /home/lsst/mnt/
 **Optional**
 After mounting to local drive we can use some of the aliases.
 ```bash
+# File: ~/tmp/dmstack/aliases.sh
 alias cls='clear; ls'
 alias ..='cd ..'
 
