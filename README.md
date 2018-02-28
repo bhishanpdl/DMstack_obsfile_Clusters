@@ -39,6 +39,7 @@ alias ..='cd ..'
 alias obs='cd obs_file && setup -k -r . && scons && cd ..'
 alias ingest='ingestImages.py input/ trial00.fits --mode link'
 alias process='processCcd.py input/ --id filename=trial00.fits --config isr.noise=5 --configfile processCcdConfig.py --clobber-config --output output'
+alias src='python read_src_fits.py && head src_fits.csv'
 ```
 
 To use these aliase we need to source this file ```source aliases.sh```.
