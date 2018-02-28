@@ -67,8 +67,8 @@ echo "lsst.obs.file.FileMapper" > input/_mapper
 ingestImages.py input/ trial00.fits --mode link  # creates input/raw/trial00.fits  and input/registry.sqlite3
 
 processCcd.py input/ --id filename=trial00.fits --config isr.noise=5 --configfile processCcdConfig.py --clobber-config --output output
-# Main output of processCcd.py is output/src/trial00/src.fits Table, ds9 can't open this, use fv-viewer to view the fits-table.
-# Or, we can see the table using the python script below.
+# Main output of processCcd.py is output/src/trial00/src.fits Table, ds9 can't open this talbe but fv-viewer can open this.
+# We can also save the table as ascii file using the script below. (we can also save ascii from fv-viewer).
 ```
 
 ## 5. Look at Output
