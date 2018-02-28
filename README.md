@@ -48,7 +48,7 @@ mkdir input output
 
 echo "lsst.obs.file.FileMapper" > input/_mapper
 
-ingestImages.py input/ trial00.fits --mode link
+ingestImages.py input/ trial00.fits --mode link  # creates input/raw/trial00.fits  and input/registry.sqlite3
 
 processCcd.py input/ --id filename=trial00.fits --config isr.noise=5 --configfile processCcdConfig.py --clobber-config --output output
 ```
