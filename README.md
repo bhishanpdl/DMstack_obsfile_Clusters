@@ -23,9 +23,10 @@ unzip a.zip; mv trial00_good.fits trial00.fits; rm a.zip; rm -rf __MACOSX; clear
 # Before running docker open XQuartz App from Search Button
 docker run -itd --name lsst -v `pwd`:/home/lsst/mnt lsstsqre/centos:7-stack-lsst_distrib-v13_0
 docker exec -it lsst bash
+cd /home/lsst/mnt/
+# If we already have aliases.sh now we can do source aliases.sh
 source /opt/lsst/software/stack/loadLSST.bash
 setup lsst_distrib
-cd /home/lsst/mnt/
 ```
 
 **Optional**
