@@ -47,16 +47,20 @@ def src_fits_table(src_fits):
         ]).T
 
 
-    # do not choose line with nan values
+    # NOTE: EXCLUDE NANs 
     # checking nChild ==0 (we take only zero values)
-    # outdat = outdat[~np.isnan(outdat).any(axis=1)]  
-    # nchild = outdat[:,0]
+    #
+    #
+    outdat = outdat[~np.isnan(outdat).any(axis=1)]  
+    nchild = outdat[:,0]
+    #
+    # confirm not nans
     # print("np.any(nchild!=0) = {}".format(np.any(nchild!=0)))
 
     # prepare to write data
     hdr_lst = ['nChild','x','y','xx','yy','xy','e1','e2','sigma']
-    hdr = '         '.join(hdr_lst)
-    np.savetxt('src_fits.csv',outdat,fmt='%.4e',header=hdr)
+    hdr = '       '.join(hdr_lst)
+    np.savetxt('src_fits.csv',outdat,fmt='%8.4f',header=hdr)
 
 def main():
     """Run main function."""
