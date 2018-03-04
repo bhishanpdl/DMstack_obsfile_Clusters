@@ -100,6 +100,49 @@ docker rm lsst
 docker rm $(docker ps -a -q)  # WARNING: removes all docker containers
 ```
 
+# DMstack Using Miniconda2
+## If dmstack is not installed using miniconda2 follow the [instructions](https://pipelines.lsst.io/v/13-0/install/conda.html).
+
+## Check Miniconda environment
+`python --version` # if it is not miniconda2 python2.7 change to that environment
+
+## Setup lsst environment
+```bash
+source activate lsst
+source eups-setups.sh
+setup lsst_distrib
+```
+
+## Setup obs_file
+```bash
+cd /Users/poudel/hack_2017/install_obs_file/obs_file
+setup -k -r .
+scons
+cd ../../example
+ls # should have trial00.fits
+```
+
+## Create input and output dirs
+rm -rf input output
+mkdir input output
+
+## Provide the mapper
+mkdir input; echo "lsst.obs.file.FileMapper" > input/_mapper
+
+## Ingest the data
+ingestImages.py input/ trial00.fits --mode link
+
+## Process the data
+echo 'config.charImage.repair.cosmicray.nCrPixelMax=1000000' > processCcdConfig.py
+processCcd.py --help
+
+processCcd.py input/ --id filename=trial00.fits --config isr.noise=5 --output output --configfile processCcdConfig.py --clobber-config
+
+## Look at the output file (src.fits)
+cp output/src/*/src.fits src.fit
+/Users/poudel/Applications/fv/fv.app/Contents/MacOS/fv src.fit
+
+
 ## Footnote:
 1. The obs_file was originally obtained from [Simon Krughoff](https://github.com/SimonKrughoff/obs_file/tree/tickets/DM-6924)
 repository. For some reason I was getting error when I use
