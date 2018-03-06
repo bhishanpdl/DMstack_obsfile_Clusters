@@ -125,24 +125,34 @@ ls # should have trial00.fits
 ```
 
 ## Create input and output dirs
+```
 rm -rf input output
 mkdir input output
+```
 
 ## Provide the mapper
+```
 mkdir input; echo "lsst.obs.file.FileMapper" > input/_mapper
+```
 
 ## Ingest the data
+```
 ingestImages.py input/ trial00.fits --mode link
+```
 
 ## Process the data
+```
 echo 'config.charImage.repair.cosmicray.nCrPixelMax=1000000' > processCcdConfig.py
 processCcd.py --help
 
 processCcd.py input/ --id filename=trial00.fits --config isr.noise=5 --output output --configfile processCcdConfig.py --clobber-config
+```
 
 ## Look at the output file (src.fits)
+```
 cp output/src/*/src.fits src.fit
 /Users/poudel/Applications/fv/fv.app/Contents/MacOS/fv src.fit
+```
 
 
 ## Footnote:
