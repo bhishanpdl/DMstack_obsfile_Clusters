@@ -1,4 +1,4 @@
-# Using obs_file with DMstack13.0 (With docker and miniconda2)
+# Using obs_file with DMstack13.0 (method1: docker, method2: miniconda2 and method3: nersc)
 Author: Bhishan Poudel  
 
 This repo is a basic tutorial how to get started with using DMstack and obs_file
