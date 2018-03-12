@@ -4,14 +4,14 @@ Author: Bhishan Poudel
 This repo is a basic tutorial how to get started with using DMstack and obs_file
 in Docker.
 
-## 0. Stop and Remove lsst environment from docker
+## 1.0 Stop and Remove lsst environment from docker
 ```
 exit # inside the docker environment
 docker stop lsst; docker rm lsst  
 # docker rm $(docker ps -a -q)  # WARNING: removes all docker containers
 ```
 
-## 1. Prepare data to use with obs_file
+## 1.1 Prepare data to use with obs_file
 ```
 # The file trial00_good.fits is obtained from jedisim cluster simulation.
 # After we get output from jedisim, we add psf and fake wcs to this and call it trial00_good.fits.
@@ -20,7 +20,7 @@ curl https://github.com/bhishanpdl/DMstack_obsfile_example/raw/master/example/tr
 unzip a.zip; mv trial00_good.fits trial00.fits; rm a.zip; rm -rf __MACOSX; clear; ls; cd ..
 ```
 
-## 2. Setup lsst environment inside docker
+## 1.2 Setup lsst environment inside docker
 ```
 # Before running docker open XQuartz App from Search Button
 docker run -itd --name lsst -v `pwd`:/home/lsst/mnt lsstsqre/centos:7-stack-lsst_distrib-v13_0
@@ -46,7 +46,7 @@ alias src='python read_src_fits.py && head src_fits.csv'
 
 To use these aliase we need to source this file ```source aliases.sh```.
 
-## 3. Setup obs_file environment
+## 1.3 Setup obs_file environment
 ```
 # We are at ~/tmp/dmstack  directory and we have example/trail00.fits path here.
 git clone https://github.com/SimonKrughoff/obs_file
@@ -57,7 +57,7 @@ scons
 cd ..
 ```
 
-## 4. Ingest and process the data
+## 1.4 Ingest and process the data
 ```
 cd example
 echo 'config.charImage.repair.cosmicray.nCrPixelMax=1000000' > processCcdConfig.py
@@ -73,7 +73,7 @@ processCcd.py input/ --id filename=trial00.fits --config isr.noise=5 --configfil
 # We can also save the table as ascii file using the script below. (we can also save ascii from fv-viewer).
 ```
 
-## 5. Look at Output
+## 1.5 Look at Output
 The output file produced is `output/src/trial00/src.fits`.
 We can view this file using fv viewer. For simplicity we can set `.fit` as a 
 default file extension for fv-viewer and copy src.fits to src.fit and open with
@@ -93,7 +93,7 @@ cp output/src/trial00/src.fits output/src/trial00/src.fit
  python read_src_fits.py
  head src_fits.csv
  ```
-## 6. Exit from docker
+## 1.6 Exit from docker
 If we want to exit from docker we may run following commands:
 ```
 exit # inside the docker environment
@@ -102,20 +102,20 @@ docker rm lsst
 docker rm $(docker ps -a -q)  # WARNING: removes all docker containers
 ```
 
-# DMstack Using Miniconda2
-## If dmstack is not installed using miniconda2 follow the [instructions](https://pipelines.lsst.io/v/13-0/install/conda.html).
+# Method 2: DMstack Using Miniconda2
+## 2.1 If dmstack is not installed using miniconda2 follow the [instructions](https://pipelines.lsst.io/v/13-0/install/conda.html).
 
-## Check Miniconda environment
+## 2.2 Check Miniconda environment
 `python --version` # if it is not miniconda2 python2.7 change to that environment
 
-## Setup lsst environment
+## 2.3 Setup lsst environment
 ```bash
 source activate lsst
 source eups-setups.sh
 setup lsst_distrib
 ```
 
-## Setup obs_file
+## 2.4 Setup obs_file
 ```bash
 cd /Users/poudel/hack_2017/install_obs_file/obs_file
 setup -k -r .
@@ -124,23 +124,23 @@ cd ../../example
 ls # should have trial00.fits
 ```
 
-## Create input and output dirs
+## 2.5 Create input and output dirs
 ```
 rm -rf input output
 mkdir input output
 ```
 
-## Provide the mapper
+## 2.6 Provide the mapper
 ```
 mkdir input; echo "lsst.obs.file.FileMapper" > input/_mapper
 ```
 
-## Ingest the data
+## 2.7 Ingest the data
 ```
 ingestImages.py input/ trial00.fits --mode link
 ```
 
-## Process the data
+## 2.8 Process the data
 ```
 echo 'config.charImage.repair.cosmicray.nCrPixelMax=1000000' > processCcdConfig.py
 processCcd.py --help
@@ -148,12 +148,19 @@ processCcd.py --help
 processCcd.py input/ --id filename=trial00.fits --config isr.noise=5 --output output --configfile processCcdConfig.py --clobber-config
 ```
 
-## Look at the output file (src.fits)
+## 2.9 Look at the output file (src.fits)
 ```
 cp output/src/*/src.fits src.fit
 /Users/poudel/Applications/fv/fv.app/Contents/MacOS/fv src.fit
 ```
 
+# Method 3: Using [NERSC](https://my.nersc.gov/)
+## ssh to nersc
+```
+ssh -Y bhishan@cori.nersc.gov
+```
+
+## Load the modules
 
 ## Footnote:
 1. The obs_file was originally obtained from [Simon Krughoff](https://github.com/SimonKrughoff/obs_file/tree/tickets/DM-6924)
