@@ -15,5 +15,9 @@ source aliases.sh
 cat aliases.sh
 load # source /opt/lsst/software/stack/loadLSST.bash
 distrib # setup lsst_distrib
+
 process # processCcd.py input/ --id filename=trial00.fits --config isr.noise=5 --configfile processCcdConfig.py --clobber-config --output output
+
+#dwnsrc # curl https://github.com/bhishanpdl/DMstack_obsfile_example/raw/master/example/read_src_fits.py -L -o read_src_fits.py
+src # python read_src_fits.py && head src_fits.csv
 ```
