@@ -161,4 +161,4 @@ repository. For some reason I was getting error when I use
 this repo in docker dmstack13.0 version. 
 I have uploaded working version of obs_file in this github repo.
 
-2. Another example of running obs_file can be found at github repo of[Binyang Liu](https://github.com/rbliu/Memo-Linux/blob/master/how_to_run_obs_file.md).
+2. Another example of running obs_file can be found at github repo of [Binyang Liu](https://github.com/rbliu/Memo-Linux/blob/master/how_to_run_obs_file.md).
