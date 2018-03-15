@@ -3,6 +3,9 @@
 alias c='clear'
 alias cls='clear; ls'
 alias ..='cd ..'
+alias ...='cd ../../'
+alias cdex='cd /home/lsst/mnt/example'
+alias cdclus='cd /home/lsst/mnt/Clusters'  # pip install -r requirements; cd ..; pip install Clusters/
 
 # Setup DM stack
 alias load='source /opt/lsst/software/stack/loadLSST.bash'
