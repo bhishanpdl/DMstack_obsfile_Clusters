@@ -15,6 +15,7 @@ source aliases.sh
 cat aliases.sh
 load # source /opt/lsst/software/stack/loadLSST.bash
 distrib # setup lsst_distrib
+obs # cd obs_file && setup -k -r . && scons && cd -
 
 process # processCcd.py input/ --id filename=trial00.fits --config isr.noise=5 --configfile processCcdConfig.py --clobber-config --output output
 
