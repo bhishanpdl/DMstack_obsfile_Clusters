@@ -20,6 +20,7 @@ obs # cd obs_file && setup -k -r . && scons && cd -
 cd example
 rm -rf input output
 mkdir input output
+map # echo "lsst.obs.file.FileMapper" > input/_mapper
 ingest # ingestImages.py input/ trial00.fits --mode link
 crprocess # echo "config.charImage.repair.cosmicray.nCrPixelMax=1000000" > processCcdConfig.py
 process # processCcd.py input/ --id filename=trial00.fits --config isr.noise=5 --configfile processCcdConfig.py --clobber-config --output output
