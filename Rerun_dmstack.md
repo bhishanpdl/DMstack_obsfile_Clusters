@@ -2,21 +2,24 @@ Author: Bhishan Poudel, Physics PhD student Ohio University
 Date  : Mar 12, 2018
 
 ```
+# cd to working directory
 cd ~/tmp/dmstack
 ls  # obs_file aliases.sh example/trial00.fits example/read_src_fits.py
-rm -rf output
 
+# Docker commands
 dstop # docker stop lsst && docker rm lsst
 drun # docker run -itd --name lsst -v `pwd`:/home/lsst/mnt lsstsqre/centos:7-stack-lsst_distrib-v13_0
 docker exec -it lsst bash
 cd /home/lsst/mnt/
 
+# Setup alias and load dmstack
 source aliases.sh
 cat aliases.sh
 load # source /opt/lsst/software/stack/loadLSST.bash
 distrib # setup lsst_distrib
 obs # cd obs_file && setup -k -r . && scons && cd -
 
+# Cd to example and run processCCD
 cd example
 rm -rf input output
 mkdir input output
