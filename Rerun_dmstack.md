@@ -17,6 +17,11 @@ load # source /opt/lsst/software/stack/loadLSST.bash
 distrib # setup lsst_distrib
 obs # cd obs_file && setup -k -r . && scons && cd -
 
+cd example
+rm -rf input output
+mkdir input output
+ingest # ingestImages.py input/ trial00.fits --mode link
+crprocess # echo "config.charImage.repair.cosmicray.nCrPixelMax=1000000" > processCcdConfig.py
 process # processCcd.py input/ --id filename=trial00.fits --config isr.noise=5 --configfile processCcdConfig.py --clobber-config --output output
 
 #dwnsrc # curl https://github.com/bhishanpdl/DMstack_obsfile_example/raw/master/example/read_src_fits.py -L -o read_src_fits.py
