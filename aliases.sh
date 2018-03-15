@@ -9,6 +9,7 @@ alias load='source /opt/lsst/software/stack/loadLSST.bash'
 alias distrib='setup lsst_distrib'
 alias obs='cd obs_file && setup -k -r . && scons && cd ..'
 alias catal='cat /home/lsst/mnt/aliases.sh'
+alias vial='vi /home/lsst/mnt/aliases.sh'
 
 # now cd to example and mkdir input; rm -rf output
 alias map='echo "lsst.obs.file.FileMapper" > input/_mapper'
