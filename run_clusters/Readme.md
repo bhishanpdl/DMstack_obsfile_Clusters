@@ -7,9 +7,7 @@ The steps are following:
 3) clusters_mass.py sim.yaml sim.hdf5
 ```
 
-Here, from the `processCcd.py` we get the output src files at `/home/bhishan/Research/a2_dmstack/dmstack_example/example/output/src/trial00/src.fits`.
-We had added the wcs and psf to the jedisim ouput file and called it `trial00.fits`. 
-Then we had mapped and ingested the image after that we processed the ccd and got that `src.fits`.
+Here, from the `jedisim` we get `lsst0.fits`. We add wcs and psf and call it `trial00.fits`. Then we use `processCcd.py` to get the file `/home/bhishan/Research/a2_dmstack/dmstack_example/example/output/src/trial00/src.fits`.
 
 
 The file `sim.yaml` looks like this:  
