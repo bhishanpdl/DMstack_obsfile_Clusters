@@ -2,7 +2,7 @@
 
 The steps are following:
 ```
-1) python clusters_import_simcat.py # filenames are hard coded, created sim.txt and sim.hdf5
+1) python clusters_hdf5_simtxt.py # filenames are hard coded, created sim.txt and sim.hdf5
 2) clusters_zphot.py sim.yaml sim.hdf5
 3) clusters_mass.py sim.yaml sim.hdf5
 ```
