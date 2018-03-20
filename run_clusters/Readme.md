@@ -22,3 +22,13 @@ The file `sim.yaml` looks like this:
              "mprior":'lin'}
 }
 ```
+
+
+The final outputs of `cluster_mass.py sim.yaml sim.hdf5` is `sim_masslin_something.txt`.
+The script `cluster_mass.py` creates 5 files (one text, one log, and 3 pkl files):  
+- sim_masslin_calFalse_zphot_ref.hdf5.chain.pkl
+- sim_masslin_calFalse_zphot_ref.hdf5.log
+- sim_masslin_calFalse_zphot_ref.hdf5.m200.mass.pkl
+- sim_masslin_calFalse_zphot_ref.hdf5.m200.mass.summary.pkl
+- sim_masslin_calFalse_zphot_ref.hdf5.m200.mass.summary.txt
+
