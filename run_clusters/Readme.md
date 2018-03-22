@@ -1,5 +1,8 @@
 # Using Cluster module to estimate the mass of the cluster
 
+## Install Clusters
+Go to the [Clusters link]() and go to checkout `2e0e1aa9463f22395abab7c1ebeba4e4781d49dc` and download that version.
+
 The steps are following:
 ```
 1) python clusters_hdf5_simtxt.py # filenames are hard coded, created sim.txt and sim.hdf5
