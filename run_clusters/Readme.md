@@ -1,7 +1,7 @@
 # Using Cluster module to estimate the mass of the cluster
 
 ## Install Clusters
-Go to the [Clusters link]() and go to checkout `2e0e1aa9463f22395abab7c1ebeba4e4781d49dc` and download that version.
+Go to the [Clusters link](https://github.com/nicolaschotard/Clusters) and go to checkout `2e0e1aa9463f22395abab7c1ebeba4e4781d49dc` and download that version.
 
 The steps are following:
 ```
