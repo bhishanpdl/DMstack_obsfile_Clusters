@@ -80,9 +80,8 @@ default file extension for fv-viewer and copy src.fits to src.fit and open with
 fv-viewer.
 ```
 # Open new tab window outside of docker environment
-cd ~/Temp/dmstack; ls
-cp output/src/trial00/src.fits output/src/trial00/src.fit
-/Applications/fv/fv.app/Contents/MacOS/fv output/src/trial00/src.fit
+cd ~/Temp/dmstack/example; ls
+/Applications/fv/fv.app/Contents/MacOS/fv output/src/trial00/src.fits
  ```
  
  We can also get some the important quantities from src.fits table using the 
