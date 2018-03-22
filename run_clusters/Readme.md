@@ -1,7 +1,12 @@
 # Using Cluster module to estimate the mass of the cluster
 
 ## Install Clusters
-Go to the [Clusters link](https://github.com/nicolaschotard/Clusters) and go to commits and download from the date  Aug-4-2017.
+- Go to the [Clusters link](https://github.com/nicolaschotard/Clusters) and go to commits and download from the date  Aug-4-2017 and download as `~/Softwares/Clusters`.
+- From the lsst environment, `cd ~/Softwares/Clusters`
+- `pip install -r requirements.txt`
+- `cd ../; pip install Clusters/`
+- `cd ~/Temp/dmstack/example`
+
 
 The steps are following:
 ```
