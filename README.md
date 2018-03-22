@@ -15,7 +15,7 @@ docker stop lsst; docker rm lsst
 ```
 # The file trial00_good.fits is obtained from jedisim cluster simulation.
 # After we get output from jedisim, we add psf and fake wcs to this and call it trial00_good.fits.
-mkdir -p ~/tmp/dmstack/example; cd ~/tmp/dmstack/example; pwd
+mkdir -p ~/Temp/dmstack/example; cd ~/Temp/dmstack/example; pwd
 curl https://github.com/bhishanpdl/DMstack_obsfile_example/raw/master/example/trial00_good_fits.zip -L -o a.zip
 unzip a.zip; mv trial00_good.fits trial00.fits; rm a.zip; rm -rf __MACOSX; clear; ls; cd ..
 ```
@@ -34,7 +34,7 @@ setup lsst_distrib
 **Optional**
 After mounting to local drive we can use some of the aliases.
 ```bash
-# File: ~/tmp/dmstack/aliases.sh
+# File: ~/Temp/dmstack/aliases.sh
 alias cls='clear; ls'
 alias ..='cd ..'
 
@@ -48,7 +48,7 @@ To use these aliase we need to source this file ```source aliases.sh```.
 
 ## 1.3 Setup obs_file environment
 ```
-# We are at ~/tmp/dmstack  directory and we have example/trail00.fits path here.
+# We are at ~/Temp/dmstack  directory and we have example/trail00.fits path here.
 git clone https://github.com/SimonKrughoff/obs_file
 cd obs_file
 git checkout 21fd0d51806c43bf335300a0bc97e409ed9c703e
@@ -80,7 +80,7 @@ default file extension for fv-viewer and copy src.fits to src.fit and open with
 fv-viewer.
 ```
 # Open new tab window outside of docker environment
-cd ~/tmp/dmstack; ls
+cd ~/Temp/dmstack; ls
 cp output/src/trial00/src.fits output/src/trial00/src.fit
 /Applications/fv/fv.app/Contents/MacOS/fv output/src/trial00/src.fit
  ```
