@@ -81,7 +81,7 @@ fv-viewer.
 ```
 # Open new tab window outside of docker environment
 cd ~/Temp/dmstack/example; ls
-/Applications/fv/fv.app/Contents/MacOS/fv output/src/trial00/src.fits
+/Applications/fv.app/Contents/MacOS/fv output/src/trial00/src.fits
  ```
  
  We can also get some the important quantities from src.fits table using the 
