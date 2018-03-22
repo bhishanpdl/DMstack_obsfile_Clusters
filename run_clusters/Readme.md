@@ -3,7 +3,7 @@
 ## Install Clusters
 - Go to the [Clusters link](https://github.com/nicolaschotard/Clusters) and go to commits and download from the date  Aug-4-2017 and download as `~/Softwares/Clusters`.
 - From the lsst environment, `cd ~/Softwares/Clusters`
-- `pip install -r requirements.txt`
+- `pip install -r requirements.txt # pymc may fail, install it from outside of lsst environment`
 - `cd ../; pip install Clusters/`
 - `cd ~/Temp/dmstack/example`
 
