@@ -20,7 +20,7 @@ cd ../
 pip install Clusters/
 ```
 
-## Create butler file called `sim.yaml`
+## Create butler file called `/Users/poudel/Temp/dmstack/example/sim.yaml`
 The file `sim.yaml` looks like this:  
 ```
 {
@@ -29,7 +29,7 @@ The file `sim.yaml` looks like this:
     "dec": 0.1,
     "redshift": 0.3,
     "filter": ["u", "g", "r", "i", "i2", "z"],
-    "butler": "/home/bhishan/Research/a2_dmstack/dmstack_example/example/output",
+    "butler": "/Users/poudel/Temp/dmstack/example/output",
     "keys": {'src':["id", "coord*", "ext_shapeHSM_HsmSourceMoments_x", "ext_shapeHSM_HsmSourceMoments_y", "ext_shapeHSM_HsmShapeRegauss_e1", "ext_shapeHSM_HsmShapeRegauss_e2"]},
     "sim": {"flag" : True, "zfile":"sim.txt"},
     "mass":{ "zconfig" : "zphot_ref",
