@@ -38,7 +38,7 @@ The file `sim.yaml` looks like this:
 ```
 
 ## Download required scripts from Bhishan's github page
-`curl https://github.com/bhishanpdl/DMstack_obsfile_example/tree/master/run_clusters/clusters_hdf5_simtxt.py -L -o clusters_hdf5_simtxt.py`
+`curl https://github.com/bhishanpdl/DMstack_obsfile_example/raw/master/run_clusters/clusters_hdf5_simtxt.py -L -o clusters_hdf5_simtxt.py`
 
 ## Now run the Cluster module
 The steps are following:
