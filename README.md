@@ -88,6 +88,8 @@ cd ~/Temp/dmstack/example; ls
  script `read_src_fits.py`.
  
  ```
+ # Note: Generally curl downloads webpages from a link, we should use the curl command wisely (like used below ) 
+ #       to download python scripts.
  curl https://github.com/bhishanpdl/DMstack_obsfile_example/raw/master/example/read_src_fits.py -L -o read_src_fits.py
  python read_src_fits.py
  head src_fits.csv
