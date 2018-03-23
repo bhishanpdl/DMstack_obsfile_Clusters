@@ -49,11 +49,9 @@ The steps are following:
 2) clusters_zphot.py sim.yaml sim.hdf5 # This will add photo-z variables in sim.hdf5
 3) clusters_mass.py sim.yaml sim.hdf5  # This will create 3 pkl files, one log, and one main text file will mass estimate.
 ```
+Final outputs are 3 pkl files, one log file and ONE mass estimate text file. We are interested in the Max Likelihood 
+mass estimte of the cluster.
 
-Here, from the `jedisim` we get `lsst0.fits`. We add wcs and psf and call it `trial00.fits`. Then we use `processCcd.py` to get the file `/home/bhishan/Research/a2_dmstack/dmstack_example/example/output/src/trial00/src.fits`.
-
-The final outputs of `cluster_mass.py sim.yaml sim.hdf5` is `sim_masslin_something.txt`.
-The script `cluster_mass.py` creates 5 files (one text, one log, and 3 pkl files):  
 - sim_masslin_calFalse_zphot_ref.hdf5.chain.pkl
 - sim_masslin_calFalse_zphot_ref.hdf5.log
 - sim_masslin_calFalse_zphot_ref.hdf5.m200.mass.pkl
