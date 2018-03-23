@@ -46,8 +46,8 @@ another python package `pyfits` so also install that.
 The steps are following:
 ```
 1) python clusters_hdf5_simtxt.py # filenames are hard coded inside this, creates sim.txt and sim.hdf5
-2) clusters_zphot.py sim.yaml sim.hdf5
-3) clusters_mass.py sim.yaml sim.hdf5
+2) clusters_zphot.py sim.yaml sim.hdf5 # This will add photo-z variables in sim.hdf5
+3) clusters_mass.py sim.yaml sim.hdf5  # This will create 3 pkl files, one log, and one main text file will mass estimate.
 ```
 
 Here, from the `jedisim` we get `lsst0.fits`. We add wcs and psf and call it `trial00.fits`. Then we use `processCcd.py` to get the file `/home/bhishan/Research/a2_dmstack/dmstack_example/example/output/src/trial00/src.fits`.
