@@ -1,24 +1,26 @@
 # Using Cluster module to estimate the mass of the cluster
 
 ## Install Clusters
-- Go to the [Clusters link](https://github.com/nicolaschotard/Clusters) and go to commits and download from the date  Aug-4-2017 and download as `~/Softwares/Clusters`.
-- From the lsst environment, `cd ~/Softwares/Clusters`
-- `pip install -r requirements.txt # pymc may fail, install it from outside of lsst environment`
-  + pymc needs fortran compilers and XQuartz. For example we need `gfotran`.
-- `cd ../; pip install Clusters/`
-- `cd ~/Temp/dmstack/example`
+First go to the [Clusters link](https://github.com/nicolaschotard/Clusters) then go to commits and download the directory `Clusters` from the date  Aug 4,2017 and make it `~/Softwares/Clusters`.
 
-
-The steps are following:
+Then we must activate lsst enivronment.
 ```
-1) python clusters_hdf5_simtxt.py # filenames are hard coded, created sim.txt and sim.hdf5
-2) clusters_zphot.py sim.yaml sim.hdf5
-3) clusters_mass.py sim.yaml sim.hdf5
+source activate lsst
+source eups-setups.sh
+setup lsst_distrib
 ```
 
-Here, from the `jedisim` we get `lsst0.fits`. We add wcs and psf and call it `trial00.fits`. Then we use `processCcd.py` to get the file `/home/bhishan/Research/a2_dmstack/dmstack_example/example/output/src/trial00/src.fits`.
+Now cd to the `Clusters` directory and install the module.
+Note that we must install `XQuartz` and `gfortan` before installing `Clusters`.
+Especially the `pymc` module needs fortran compiler `gfortran` for the installation.
+```
+cd ~/Softwares/Clusters
+pip install -r requirements.txt # pymc needs gfortran and gfortran needs XQuartz
+cd ../
+pip install Clusters/
+```
 
-
+## Create butler file called `sim.yaml`
 The file `sim.yaml` looks like this:  
 ```
 {
@@ -35,6 +37,18 @@ The file `sim.yaml` looks like this:
 }
 ```
 
+## Download required scripts from Bhishan's github page
+`curl https://github.com/bhishanpdl/DMstack_obsfile_example/tree/master/run_clusters/clusters_hdf5_simtxt.py -L -o clusters_hdf5_simtxt.py`
+
+## Now run the Cluster module
+The steps are following:
+```
+1) python clusters_hdf5_simtxt.py # filenames are hard coded inside this, creates sim.txt and sim.hdf5
+2) clusters_zphot.py sim.yaml sim.hdf5
+3) clusters_mass.py sim.yaml sim.hdf5
+```
+
+Here, from the `jedisim` we get `lsst0.fits`. We add wcs and psf and call it `trial00.fits`. Then we use `processCcd.py` to get the file `/home/bhishan/Research/a2_dmstack/dmstack_example/example/output/src/trial00/src.fits`.
 
 The final outputs of `cluster_mass.py sim.yaml sim.hdf5` is `sim_masslin_something.txt`.
 The script `cluster_mass.py` creates 5 files (one text, one log, and 3 pkl files):  
