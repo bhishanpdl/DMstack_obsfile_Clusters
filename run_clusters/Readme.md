@@ -24,8 +24,13 @@ cd ../
 pip install Clusters/
 ```
 
-## Create butler file called `/Users/poudel/Temp/dmstack/example/sim.yaml`.
-`curl https://github.com/bhishanpdl/DMstack_obsfile_example/raw/master/run_clusters/sim.yaml -L -o sim.yaml`.
+## After installing `Clusters` cd to example directory
+```
+cd /Users/poudel/Temp/dmstack/example
+curl https://github.com/bhishanpdl/DMstack_obsfile_example/raw/master/run_clusters/sim.yaml -L -o sim.yaml
+```
+
+
 The file `sim.yaml` looks like this:  
 ```
 {
@@ -42,10 +47,14 @@ The file `sim.yaml` looks like this:
 }
 ```
 
-## Download required scripts from Bhishan's github page
+## Create hdf5 and a text files requried by `Cluster` module script.
+We can download the script from Bhishan's git page.
 `curl https://github.com/bhishanpdl/DMstack_obsfile_example/raw/master/run_clusters/clusters_hdf5_simtxt.py -L -o clusters_hdf5_simtxt.py`.
-Note that the download webpage of `clusters_hdf5_simtxt.py` is different from the actual webpage `https://github.com/bhishanpdl/DMstack_obsfile_example/blob/master/run_clusters/clusters_hdf5_simtxt.py`. This script needs
-another python package `pyfits` so also install that.
+
+
+Note that the download webpage of `clusters_hdf5_simtxt.py` is different from the actual webpage `https://github.com/bhishanpdl/DMstack_obsfile_example/blob/master/run_clusters/clusters_hdf5_simtxt.py`. 
+
+This script needs another python package `pyfits` so also install that.
 
 ## Now run the Cluster module
 The steps are following:
