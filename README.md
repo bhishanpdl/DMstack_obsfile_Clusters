@@ -138,6 +138,7 @@ mkdir input; echo "lsst.obs.file.FileMapper" > input/_mapper
 
 ## 2.7 Ingest the data
 ```
+# NOTE: ingest needs  `pip install file` with ananonda2 pip., file needs libmagic.h and libmagic.dylib file.
 ingestImages.py input/ trial00.fits --mode link
 ```
 
