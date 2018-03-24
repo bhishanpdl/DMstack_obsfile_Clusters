@@ -13,14 +13,19 @@ setup lsst_distrib
 Now cd to the `Clusters` directory and install the module.
 Note that we must install `XQuartz` and `gfortan` before installing `Clusters`.
 Especially the `pymc` module needs fortran compiler `gfortran` for the installation.
+Go to [official link](https://gcc.gnu.org/wiki/GFortranBinaries#MacOS) to download `gofrtran`, unpack the `.pkg` file and right click and open it to install.
 ```
 cd ~/Softwares/Clusters
-pip install -r requirements.txt # pymc needs gfortran and gfortran needs XQuartz
+# Before installing cluster requirements we need to install gfortran
+# Before installing cluster requirements, install and atom, it installs xcode DO NOT INSTALL XQuartz.
+pip install pymc
+pip install -r requirements.txt # pymc needs gfortran and gfortran needs Xcode, install xcode from atom.
 cd ../
 pip install Clusters/
 ```
 
-## Create butler file called `/Users/poudel/Temp/dmstack/example/sim.yaml`
+## Create butler file called `/Users/poudel/Temp/dmstack/example/sim.yaml`.
+`curl https://github.com/bhishanpdl/DMstack_obsfile_example/raw/master/run_clusters/sim.yaml -L -o sim.yaml`.
 The file `sim.yaml` looks like this:  
 ```
 {
