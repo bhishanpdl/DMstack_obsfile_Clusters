@@ -1,4 +1,4 @@
-#!/Users/poudel/Library/Enthought/Canopy/edm/envs/User/bin/python
+#!python
 # -*- coding: utf-8 -*-#
 """
 Add given psf to random places of a cluster.
