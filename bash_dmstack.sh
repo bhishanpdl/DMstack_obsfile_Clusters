@@ -1,4 +1,6 @@
-#============================ dmstack installation =============================
+#===============================================================================
+# A) dmstack installation
+#===============================================================================
 # install dmstack13 using conda: https://pipelines.lsst.io/v/13-0/install/conda.html
 #
 # 1)  conda update -n base conda
@@ -9,20 +11,24 @@
 # 6) source eups-setups.sh
 # 7) setup lsst_distrib
 ##==============================================================================
-#
+# B) lsse environment setup
+#==============================================================================
 # Now we can use lsst environment
 alias sbdm='source bash_dmstack.sh'
 alias lsst='source activate lsst && source eups-setups.sh && setup lsst_distrib'
 alias obs='cd ~/Softwares/obs_file && setup -k -r . && scons && cd -'
+##==============================================================================
+# C) obs_file Usage
+##==============================================================================
 alias rmio='rm -rf input output'
 alias map='mkdir -p input && echo "lsst.obs.file.FileMapper" > input/_mapper' # creates mapper
 alias ingest='ingestImages.py input/ trial00.fits --mode link'  # input: registry.sqlite3 and raw/trial00.fits
 alias crccd='echo "config.charImage.repair.cosmicray.nCrPixelMax=1000000" > processCcdConfig.py'
 alias prccd='processCcd.py input/ --id filename=trial00.fits --config isr.noise=5 --configfile processCcdConfig.py --clobber-config --output output'
 alias src='python read_src_fits.py && head src_fits.csv'
-#
-#
-#========================== Clusters installation ==============================
+##==============================================================================
+# C) Clusters installation
+##==============================================================================
 #
 # NEVER install XQuartz, it caused me problems
 # First install gfortran from official site
@@ -33,7 +39,8 @@ alias src='python read_src_fits.py && head src_fits.csv'
 # cd ../
 # pip install Clusters/
 #===============================================================================
-#
+# D) Clusters Usage
+##==============================================================================
 # 0) python yaml_create.py # create sim.yaml
 # 1) python clusters_hdf5_simtxt.py # Create sim.txt and sim.hdf5
 # 2) clusters_zphot.py sim.yaml sim.hdf5  # Adding zphot_ref  to sim.hdf5
