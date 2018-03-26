@@ -15,10 +15,11 @@ Note that we must install `XQuartz` and `gfortan` before installing `Clusters`.
 Especially the `pymc` module needs fortran compiler `gfortran` for the installation.
 Go to [official link](https://gcc.gnu.org/wiki/GFortranBinaries#MacOS) to download `gofrtran`, unpack the `.pkg` file and right click and open it to install.
 ```
+NEVER install XQuartz, it caused me problems
+First install gfortran from official site
+Then install Atom, it will install Xcode, which is vital to Clusters
+Go to Aug 4, 2017 version of Clusters on github and download it to: ~/Softwares/
 cd ~/Softwares/Clusters
-# Before installing cluster requirements we need to install gfortran
-# Before installing cluster requirements, install and atom, it installs xcode DO NOT INSTALL XQuartz.
-pip install pymc
 pip install -r requirements.txt # pymc needs gfortran and gfortran needs Xcode, install xcode from atom.
 cd ../
 pip install Clusters/
