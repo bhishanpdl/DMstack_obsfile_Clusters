@@ -1,32 +1,48 @@
 # Using Cluster module to estimate the mass of the cluster
 
-## Install Clusters (one time in one machine, use miniconda2)
-First go to the [Clusters link](https://github.com/nicolaschotard/Clusters) then go to commits and download the directory `Clusters` from the date  Aug 4,2017 and make it `~/Softwares/Clusters`.
+## Install Clusters (We need to install only once, use miniconda2)
+Here, to install clusters module, ideally we download the latest build from the github, but for some reasons I am
+getting error installing newer version of this module. The working version was from Aug 4, 2017.
 
-Then we must activate lsst enivronment.
+We can go the github link of [Clusters](https://github.com/nicolaschotard/Clusters) from that commit date and download as `~/Softwares/Clusters`.
+
+Then we need to activate the `lsst` enivronment.
 ```
-source activate lsst
-source eups-setups.sh
-setup lsst_distrib
+source activate lsst && source eups-setups.sh && setup lsst_distrib
 ```
 
-Now cd to the `Clusters` directory and install the module.
-Note that we must install `XQuartz` and `gfortan` before installing `Clusters`.
-Especially the `pymc` module needs fortran compiler `gfortran` for the installation.
-Go to [official link](https://gcc.gnu.org/wiki/GFortranBinaries#MacOS) to download `gofrtran`, unpack the `.pkg` file and right click and open it to install.
+Before pip installing Clusters, we need to install some dependecies.
+First we need to install `gfortran` compiler from the [official link](https://gcc.gnu.org/wiki/GFortranBinaries#MacOS).
+We can right click the `.pkg` and install it.
+
+After installing, `gfortran` we need to install `XQuartz`. The `pymc` module of `Cluster` needs `XQuartz` to be installed.
+NEVER download XQuartz directly from official website, it gave me problems on installatin.
+
+There is a easy workaround, uninstall the text editor `Atom` and install from official website, it will install 
+compatible `XQartz` itself.
+
+Now, we have installed `gfortran` and `XQuartz` on our machine. We are ready to install `Clusters` module.
+First go to the miniconda2 environment.
+
 ```
-NEVER install XQuartz, it caused me problems
-First install gfortran from official site
-Then install Atom, it will install Xcode, which is vital to Clusters
-Go to Aug 4, 2017 version of Clusters on github and download it to: ~/Softwares/
+$ python --version
+Python 2.7.14 :: Anaconda, Inc.
+```
+If we are in python 2 environment from conda, we cd to the downloaded folder of Cluster and install it.
+```
 cd ~/Softwares/Clusters
 pip install -r requirements.txt # pymc needs gfortran and gfortran needs Xcode, install xcode from atom.
 cd ../
 pip install Clusters/
 ```
 
-## After installing `Clusters` cd to example directory
-We need to install the cluster module only once, like installing numpy moudule then we are good to use it.
+## After installing `Clusters` go to the "example" directory where we have obs_file outputs
+We need to install the cluster module only once after that we are good to use it.
+
+Assume that we run `obs_file` on the folder `/Users/poudel/Temp/dmstack/example`, we go to this
+folder and run `Cluster` module to get the mass estimation of the output given by `obs_file` module.
+
+
 ```
 cd /Users/poudel/Temp/dmstack/example
 curl https://github.com/bhishanpdl/DMstack_obsfile_example/raw/master/run_clusters/sim.yaml -L -o sim.yaml
@@ -70,7 +86,7 @@ The steps are following:
 ```
 Final outputs are 3 pkl files, one log file and ONE mass estimate text file. We are interested in the Max Likelihood 
 mass estimte of the cluster.
-
+The outputs are following:
 - sim_masslin_calFalse_zphot_ref.hdf5.chain.pkl
 - sim_masslin_calFalse_zphot_ref.hdf5.log
 - sim_masslin_calFalse_zphot_ref.hdf5.m200.mass.pkl
