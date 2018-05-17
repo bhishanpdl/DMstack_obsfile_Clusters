@@ -1,6 +1,6 @@
 # Using Cluster module to estimate the mass of the cluster
 
-## Install Clusters
+## Install Clusters (one time in one machine, use miniconda2)
 First go to the [Clusters link](https://github.com/nicolaschotard/Clusters) then go to commits and download the directory `Clusters` from the date  Aug 4,2017 and make it `~/Softwares/Clusters`.
 
 Then we must activate lsst enivronment.
@@ -26,13 +26,15 @@ pip install Clusters/
 ```
 
 ## After installing `Clusters` cd to example directory
+We need to install the cluster module only once, like installing numpy moudule then we are good to use it.
 ```
 cd /Users/poudel/Temp/dmstack/example
 curl https://github.com/bhishanpdl/DMstack_obsfile_example/raw/master/run_clusters/sim.yaml -L -o sim.yaml
 ```
 
 
-The file `sim.yaml` looks like this:  
+The file `sim.yaml` looks like this:
+Change the file path as needed.
 ```
 {
     "cluster": "SIM_cluster",
