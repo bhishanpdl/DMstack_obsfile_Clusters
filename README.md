@@ -144,9 +144,8 @@ ingestImages.py input/ trial00.fits --mode link
 
 ## 2.8 Process the data
 ```
+# processCcd.py --help
 echo 'config.charImage.repair.cosmicray.nCrPixelMax=1000000' > processCcdConfig.py
-processCcd.py --help
-
 processCcd.py input/ --id filename=trial00.fits --config isr.noise=5 --output output --configfile processCcdConfig.py --clobber-config
 ```
 
