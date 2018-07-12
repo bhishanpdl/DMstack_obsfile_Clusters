@@ -1,10 +1,11 @@
-# Using obs_file with DMstack13.0 (method1: docker, method2: miniconda2 and method3: nersc)
+# Using obs_file with DMstack13.0 
+# (method1: docker, method2: miniconda2)
 Author: Bhishan Poudel  
 
 This repo is a basic tutorial how to get started with using DMstack and obs_file
 in Docker.
 
-## 1.0 Stop and Remove lsst environment from docker
+## 1.0 If you are inside docker env stop and remove lsst environment from docker
 ```
 exit # inside the docker environment
 docker stop lsst; docker rm lsst  
@@ -15,15 +16,22 @@ docker stop lsst; docker rm lsst
 ```
 # The file trial00_good.fits is obtained from jedisim cluster simulation.
 # After we get output from jedisim, we add psf and fake wcs to this and call it trial00_good.fits.
+# This command is run in local computer, not inside docker.
 mkdir -p ~/Temp/dmstack/example; cd ~/Temp/dmstack/example; pwd
 curl https://github.com/bhishanpdl/DMstack_obsfile_example/raw/master/example/trial00_good_fits.zip -L -o a.zip
-unzip a.zip; mv trial00_good.fits trial00.fits; rm a.zip; rm -rf __MACOSX; clear; ls; cd ..
+unzip a.zip; mv trial00_good.fits trial00.fits; rm a.zip; rm -rf __MACOSX; clear; ls; cd ..; ls
+
+# Now we are at `~/Temp/dmstack` directory and we have `examples` directory here.
 ```
 
 ## 1.2 Setup lsst environment inside docker
+For the reference follow [LSST Pipelines instructions] (https://pipelines.lsst.io/install/docker.html).
+
 ```
 # Before running docker open XQuartz App from Search Button
-docker run -itd --name lsst -v `pwd`:/home/lsst/mnt lsstsqre/centos:7-stack-lsst_distrib-v13_0
+# Latest dmstack is version 16 (July 2018)
+# docker run -itd --name lsst -v `pwd`:/home/lsst/mnt lsstsqre/centos:7-stack-lsst_distrib-v16_0
+docker run -itd --name lsst -v `pwd`:/home/lsst/mnt lsstsqre/centos:7-stack-lsst_distrib-v13_0 #Compatible with obs_file
 docker exec -it lsst bash
 cd /home/lsst/mnt/
 # If we already have aliases.sh now we can do source aliases.sh
@@ -31,17 +39,15 @@ source /opt/lsst/software/stack/loadLSST.bash
 setup lsst_distrib
 ```
 
-**Optional**
-After mounting to local drive we can use some of the aliases.
-```bash
-# File: ~/Temp/dmstack/aliases.sh
-alias cls='clear; ls'
-alias ..='cd ..'
+Note: We can download aliases.sh using these commands:
+```
+cmd t # to open new tab on terminal
+cd  ~/Temp/dmstack
+curl https://github.com/bhishanpdl/DMstack_obsfile_example/raw/master/aliases.sh -L -o aliases.sh
+cat aliases.sh
 
-alias obs='cd obs_file && setup -k -r . && scons && cd ..'
-alias ingest='ingestImages.py input/ trial00.fits --mode link'
-alias process='processCcd.py input/ --id filename=trial00.fits --config isr.noise=5 --configfile processCcdConfig.py --clobber-config --output output'
-alias src='python read_src_fits.py && head src_fits.csv'
+# now go to lsst env inside docker
+source aliases.sh
 ```
 
 To use these aliase we need to source this file ```source aliases.sh```.
@@ -62,9 +68,8 @@ cd ..
 cd example
 echo 'config.charImage.repair.cosmicray.nCrPixelMax=1000000' > processCcdConfig.py
 ls # it should have trial00.fits and processCcdConfig.py
-mkdir input output
 
-echo "lsst.obs.file.FileMapper" > input/_mapper
+mkdir -p input; echo "lsst.obs.file.FileMapper" > input/_mapper
 
 ingestImages.py input/ trial00.fits --mode link  # creates input/raw/trial00.fits  and input/registry.sqlite3
 
@@ -153,12 +158,6 @@ processCcd.py input/ --id filename=trial00.fits --config isr.noise=5 --output ou
 ```
 cp output/src/*/src.fits src.fit
 /Users/poudel/Applications/fv/fv.app/Contents/MacOS/fv src.fit
-```
-
-# Method 3: Using [NERSC](https://my.nersc.gov/)
-## ssh to nersc
-```
-ssh -Y bhishan@cori.nersc.gov
 ```
 
 ## Load the modules
