@@ -1,55 +1,41 @@
+
 #!python
 # -*- coding: utf-8 -*-#
 """
-Reading fitsfile table
+Read mass output from processCcd.py into a text file.
 
-@author: Bhishan Poudel
-
-@date: Mar 24, 2018
-
-
+Author : Bhishan Poudel
+Date   : Jul 13, 2018
 """
 # Imports
-import numpy as np
 import os
-import shutil
-import glob
+import sys
 
-def read_mass():
+def read_mass(mass_txt):
     # 'MaxLike	1.153734e+15	2.949554e+14	6.627750e+14'
     infile = 'sim_masslin_calFalse_zphot_ref.hdf5.m200.mass.summary.txt'
-
+    mass = 0.0
     with open(infile) as fi:
         for line in fi:
             # MaxLike	1.153734e+15	2.949554e+14	6.627750e+14
-        	if line.lstrip().startswith('MaxLike'):
-        		mass = line.split()[1]
-        		print("MaxLike mass = {}".format(mass))
+            if line.lstrip().startswith('MaxLike'):
+                mass = line.split()[1]
+                print("MaxLike mass = {}".format(mass))
 
+    os.remove('sim_masslin_calFalse_zphot_ref.hdf5.chain.pkl')
+    os.remove('sim_masslin_calFalse_zphot_ref.hdf5.log')
+    os.remove('sim_masslin_calFalse_zphot_ref.hdf5.m200.mass.pkl')
+    os.remove('sim_masslin_calFalse_zphot_ref.hdf5.m200.mass.summary.pkl')
 
-    with open('MaxLike_mass.txt','w') as fo:
-        fo.write(mass)
+    os.rename(infile,mass_txt)
 
-    for f in glob.glob('*.pkl'):
-        print('Deleting: ', f)
-        os.remove(f)
-
-    for f in glob.glob('*.log'):
-        print('Deleting: ', f)
-        os.remove(f)
-
-    if not os.path.isdir('mass_summary'):
-        print('Creating: ', 'mass_summary')
-        os.makedirs('mass_summary')
-
-    shutil.copyfile(infile, 'mass_summary/mass_summary1.txt')
+    return mass
 
 
 def main():
-    """Run main function."""
-    read_mass()
-
-
+    mass_txt = 'mass_' + sys.argv[1][0:-5] + '.txt'
+    print('Writing: ', mass_txt)
+    read_mass(mass_txt)
 
 if __name__ == "__main__":
-    main()
+    main() 
