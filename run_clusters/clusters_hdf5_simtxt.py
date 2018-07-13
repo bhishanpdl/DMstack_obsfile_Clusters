@@ -1,10 +1,11 @@
 import pyfits
 import astropy.table as table
 import numpy as np
+import glob
 
 
 
-srcfile = 'output/src/trial00/src.fits'
+srcfile = glob.glob('output/src/*/src.fits')[0]
 catfile = 'sim.hdf5'  # to be used with "clusters_mass.py config.yaml cat_wtg.hdf5"
 
 print('Reading: {}'.format(srcfile))
