@@ -116,24 +116,18 @@ docker rm $(docker ps -a -q)  # WARNING: removes all docker containers
 
 ## 2.3 Setup lsst environment
 ```bash
-source activate lsst
-source eups-setups.sh
-setup lsst_distrib
+source activate lsst && source eups-setups.sh && setup lsst_distrib
 ```
 
 ## 2.4 Setup obs_file
 ```bash
-cd /Users/poudel/hack_2017/install_obs_file/obs_file
-setup -k -r .
-scons
-cd ../../example
-ls # should have trial00.fits
+# First download the obs_file to the folder ~/Softwares/
+cd ~/Softwares/obs_file && setup -k -r . && scons && cd - && ls
 ```
 
 ## 2.5 Create input and output dirs
 ```
-rm -rf input output
-mkdir input output
+rm -rf input output; mkdir input output
 ```
 
 ## 2.6 Provide the mapper
