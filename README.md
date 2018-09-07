@@ -1,3 +1,28 @@
+  Table of Contents
+  =================
+  * [Using obs_file with DMstack13.0](#using-obs_file-with-dmstack130)
+  * [(method1: docker, method2: miniconda2)](#method1-docker-method2-miniconda2)
+  * [1.0 If you are inside docker env stop and remove lsst environment from docker](#10-if-you-are-inside-docker-env-stop-and-remove-lsst-environment-from-docker)
+  * [1.1 Prepare data to use with obs_file](#11-prepare-data-to-use-with-obs_file)
+  * [1.2 Setup lsst environment inside docker](#12-setup-lsst-environment-inside-docker)
+  * [1.3 Setup obs_file environment](#13-setup-obs_file-environment)
+  * [1.4 Ingest and process the data](#14-ingest-and-process-the-data)
+  * [1.5 Look at Output](#15-look-at-output)
+  * [1.6 Exit from docker](#16-exit-from-docker)
+  * [Method 2: DMstack Using Miniconda2](#method-2-dmstack-using-miniconda2)
+  * [2.1 If dmstack is not installed using miniconda2 follow the <a href="https://pipelines.lsst.io/v/13-0/install/conda.html" rel="nofollow">instructions</a>.](#21-if-dmstack-is-not-installed-using-miniconda2-follow-the-instructions)
+  * [2.2 Check Miniconda environment](#22-check-miniconda-environment)
+  * [2.3 Setup lsst environment](#23-setup-lsst-environment)
+  * [2.4 Setup obs_file](#24-setup-obs_file)
+  * [2.5 Create input and output dirs](#25-create-input-and-output-dirs)
+  * [2.6 Provide the mapper](#26-provide-the-mapper)
+  * [2.7 Ingest the data](#27-ingest-the-data)
+  * [2.8 Process the data](#28-process-the-data)
+  * [2.9 Look at the output file (src.fits)](#29-look-at-the-output-file-srcfits)
+  * [Load the modules](#load-the-modules)
+  * [Footnote:](#footnote)
+  Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc)
+
 # Using obs_file with DMstack13.0 
 # (method1: docker, method2: miniconda2)
 Author: Bhishan Poudel  
