@@ -21,7 +21,6 @@
   * [2.9 Look at the output file (src.fits)](#29-look-at-the-output-file-srcfits)
   * [Load the modules](#load-the-modules)
   * [Footnote:](#footnote)
-  Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc)
 
 # Using obs_file with DMstack13.0 
 # (method1: docker, method2: miniconda2)
