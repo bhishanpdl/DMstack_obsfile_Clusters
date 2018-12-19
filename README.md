@@ -19,13 +19,65 @@
   * [2.9 Look at the output file (src.fits)](#29-look-at-the-output-file--srcfits-)
   * [Load the modules](#load-the-modules)
   * [Footnote:](#footnote-)
+  
+  
+Using obs_file with DMstack16.0 with miniconda3
+=============================================================================
 
-# Using obs_file with DMstack13.0 
-# (method1: docker, method2: miniconda2)
-Author: Bhishan Poudel  
+## Install lsst pipelines
+- Follow the steps of pipelines.lsst.io and intall dmstack.
+- Say yes when lsst pipeline asks to install miniconda3
+- Download obs_file repo https://github.com/SimonKrughoff/obs_file/tree/tickets/DM-6924
+- Place it like `~/Softwares/obs_file-tickets-DM-6924`
 
-This repo is a basic tutorial how to get started with using DMstack and obs_file
-in Docker.
+## Go the directory having fitsfile with WCS and Stars
+```bash
+cd ~/mydmstack/example
+ls # trial00.fits
+```
+
+## Setup lsst environment
+```
+source ~/lsst_stack/loadLSST.bash
+setup lsst_distrib
+```
+
+## Activate obs_file
+```
+cd ~/Softwares/obs_file-tickets-DM-6924 && setup -k -r . && scons && cd -
+```
+
+## Create a mapper
+```
+cd ~/mydmstack/examples
+rm -r input output
+mkdir input output
+echo "lsst.obs.file.fileMapper.FileMapper" > input/_mapper
+```
+
+## Ingest the fitsfile
+```
+ingestImages.py input/ trial00.fits --mode link
+```
+
+## Process the CCD
+```
+echo "config.charImage.repair.cosmicray.nCrPixelMax=1000000" > processCcdConfig.py
+processCcd.py input/ --id filename=trial00.fits extname=UNKNOWN --config isr.noise=5 --output output --configfile processCcdConfig.py --clobber-config
+```
+
+## Final output
+```
+mydmstack/example/output/src/UNKNOWN/trial00/src.fits
+output/src/UNKNOWN/trial00/src.fits # the ouput directory is created if not existent, but we need to create input dir.
+
+# this is a fitstable not an fitsimage
+# we can we fv-viewer to view this table.
+```
+
+
+Using obs_file with DMstack13.0 using Docker
+=============================================================================
 
 ## 1.0 If you are inside docker env stop and remove lsst environment from docker
 ```
@@ -130,7 +182,8 @@ docker rm lsst
 docker rm $(docker ps -a -q)  # WARNING: removes all docker containers
 ```
 
-# Method 2: DMstack Using Miniconda2
+Using obs_file with DMstack13.0 with miniconda2
+=============================================================================
 ## 2.1 If dmstack is not installed using miniconda2 follow the [instructions](https://pipelines.lsst.io/v/13-0/install/conda.html).
 
 ## 2.2 Check Miniconda environment
@@ -176,7 +229,6 @@ cp output/src/*/src.fits src.fit
 /Users/poudel/Applications/fv/fv.app/Contents/MacOS/fv src.fit
 ```
 
-## Load the modules
 
 ## Footnote:
 1. The obs_file was originally obtained from [Simon Krughoff](https://github.com/SimonKrughoff/obs_file/tree/tickets/DM-6924)
