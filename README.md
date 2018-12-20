@@ -134,9 +134,9 @@ curl https://github.com/bhishanpdl/DMstack_obsfile_example/raw/master/run_cluste
              "mprior":'lin'}
 }
 ```
-## Create a hdf5 and a text file requried by `Cluster`.
+## Create sim.hdf5 and sim.txt required by `Cluster`.
 
-We can download the script from Bhishan's git page.   
+We can download the script from github.   
 ```bash
 curl https://github.com/bhishanpdl/DMstack_obsfile_example/raw/master/run_clusters/clusters_hdf5_simtxt.py -L -o clusters_hdf5_simtxt.py
 
@@ -145,7 +145,7 @@ curl https://github.com/bhishanpdl/DMstack_obsfile_example/raw/master/run_cluste
 # Curl website: https://github.com/bhishanpdl/DMstack_obsfile_example/raw/master/run_clusters/clusters_hdf5_simtxt.py
 ```
 
-## Now run the Cluster module
+## Run the Cluster module
 The steps are following:
 ```bash
 # step1: creates sim.txt and sim.hdf5
