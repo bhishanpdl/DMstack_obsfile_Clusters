@@ -1,3 +1,16 @@
+#!python
+# -*- coding: utf-8 -*-#
+"""
+Create sim.hdf5 and sim.txt file using src.fits.
+
+src.fits is a fitstable obtained from obs_file package.
+Clusters module needs sim.hdf5 and sim.txt so, we need to create them.
+
+Author : Bhishan Poudel
+Date   : Dec 20, 2018
+
+Dependencies: h5py, numpy, astropy
+"""
 import numpy as np
 import glob
 
