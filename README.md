@@ -148,9 +148,18 @@ curl https://github.com/bhishanpdl/DMstack_obsfile_example/raw/master/run_cluste
 ## Now run the Cluster module
 The steps are following:
 ```bash
-python clusters_hdf5_simtxt.py # filenames are hard coded inside this, creates sim.txt and sim.hdf5
-clusters_zphot.py sim.yaml sim.hdf5 # This will add photo-z variables in sim.hdf5
-clusters_mass.py sim.yaml sim.hdf5  # This will create 3 pkl files, one log, and one main text file will mass estimate.
+# step1: creates sim.txt and sim.hdf5
+# filenames are hard coded inside the code.
+python clusters_hdf5_simtxt.py       
+
+# step2: add photo-z variables to the file sim.hdf5
+clusters_zphot.py sim.yaml sim.hdf5
+
+# step3: Run the main program to estimate mass
+# This will create 3 pkl files, one log, and one main text file will mass estimate.
+# This will take about 15 minutes to finish. Will run about 10k iterations.
+clusters_mass.py sim.yaml sim.hdf5  
+
 ```
 Final outputs are 3 pkl files, one log file and ONE mass estimate text file. We are interested in the Max Likelihood 
 mass estimte of the cluster.
@@ -161,6 +170,25 @@ The outputs are following:
 - sim_masslin_calFalse_zphot_ref.hdf5.m200.mass.summary.pkl
 - sim_masslin_calFalse_zphot_ref.hdf5.m200.mass.summary.txt
 
+Exmaple:
+```
+# File: sim_masslin_calFalse_zphot_ref.hdf5.m200.mass.summary.txt
+mean	6.947353e+14
+stddev	2.675523e+14
+Q2.5	2.309040e+14
+Q25	4.899290e+14
+Q50	6.687590e+14
+Q75	8.893375e+14
+Q97.5	1.208473e+15
+HPD68	3.238060e+14	8.775934e+14
+HPD95	2.259573e+14	1.195459e+15
+MaxLike	4.936213e+14	1.670360e+14	3.870734e+14
+Log10 Maxlike	1.473170e+01	6.239960e-02	2.875080e-01
+
+
+Meaning:
+Estimated mass of cluster = 4.936 solar mass
+```
 
 
 Using obs_file with DMstack13.0 using Docker
