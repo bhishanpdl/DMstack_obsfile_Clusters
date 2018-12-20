@@ -42,14 +42,12 @@ obj_id = t['id']
 # Write pipeline-compatible hdf5 file
 hdf5 = 'sim.hdf5'
 names = ('id', 'coord_ra_deg', 'coord_dec_deg', 'ext_shapeHSM_HsmShapeRegauss_e1', 'ext_shapeHSM_HsmShapeRegauss_e2')
-
-t2 = Table([obj_id, ra, dec, e1, e2], names=names)
-
 print('Writing: {}'.format(hdf5))
+t2 = Table([obj_id, ra, dec, e1, e2], names=names)
 t2.write(hdf5, path='deepCoadd_meas', overwrite=True, format='hdf5')
 
 # Write sim.txt file
-zsim = np.zeros(len(ra))+1.5
+zsim = np.zeros(len(ra)) + 1.5 # simulation redshift is taken 1.5
 data = np.array([obj_id, zsim])
 
 print('Writing: sim.txt')
