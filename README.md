@@ -9,7 +9,7 @@ Table of Contents
       * [Ingest the fitsfile](#ingest-the-fitsfile)
       * [Process the CCD](#process-the-ccd)
       * [Final output](#final-output)
-   * [Running Clusters moduel after obs_file](#running-clusters-moduel-after-obs_file)
+   * [Running Clusters module after obs_file](#running-clusters-module-after-obs_file)
       * [Install gfortran and XQuartz before installing Cluster](#install-gfortran-and-xquartz-before-installing-cluster)
       * [Download Cluster Package and install it (We need to install only once)](#download-cluster-package-and-install-it-we-need-to-install-only-once)
       * [Go to example directory having obs_file outputs](#go-to-example-directory-having-obs_file-outputs)
@@ -41,7 +41,7 @@ Using obs_file with DMstack16.0 with miniconda3
 =================================================
 
 ## Install lsst pipelines
-- Follow the steps of pipelines.lsst.io and intall dmstack.
+- Follow the steps of [pipelines.lsst.io](https://pipelines.lsst.io/) and install dmstack.
 - Say yes when lsst pipeline asks to install miniconda3
 - Download obs_file repo https://github.com/SimonKrughoff/obs_file/tree/tickets/DM-6924
 - Place it like `~/Softwares/obs_file-tickets-DM-6924`
@@ -92,7 +92,7 @@ output/src/UNKNOWN/trial00/src.fits # the ouput directory is created if not exis
 ```
 
 
-Running Clusters moduel after obs_file
+Running Clusters module after obs_file
 ========================================
 After we run obs_file we get the fitstable called `src.fits` having copious number of columns.
 To get the mass estimation using RA, DEC, and ellipticities we use [Clusters](https://github.com/nicolaschotard/Clusters) module.
