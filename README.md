@@ -2,7 +2,7 @@ Table of Contents
 =================
    * [Using obs_file with DMstack16.0 with miniconda3](#using-obs_file-with-dmstack160-with-miniconda3)
       * [Install lsst pipelines](#install-lsst-pipelines)
-      * [Go the directory having fitsfile with WCS and Stars](#go-the-directory-having-fitsfile-with-wcs-and-stars)
+      * [Go to the directory having fitsfile with WCS and Stars](#go-to-the-directory-having-fitsfile-with-wcs-and-stars)
       * [Setup lsst environment](#setup-lsst-environment)
       * [Activate obs_file](#activate-obs_file)
       * [Create a mapper](#create-a-mapper)
@@ -46,7 +46,7 @@ Using obs_file with DMstack16.0 with miniconda3
 - Download obs_file repo https://github.com/SimonKrughoff/obs_file/tree/tickets/DM-6924
 - Place it like `~/Softwares/obs_file-tickets-DM-6924`
 
-## Go the directory having fitsfile with WCS and Stars
+## Go to the directory having fitsfile with WCS and Stars
 ```bash
 cd ~/mydmstack/example
 ls # trial00.fits
